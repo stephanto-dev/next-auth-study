@@ -1,6 +1,17 @@
 import { Nav } from '@/components/nav';
+import { redirect } from 'next/navigation'
+import { createClient } from '@/utils/supabase/server'
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const supabase = await createClient();
+
+  const {data, error} = await supabase.auth.getUser();
+  console.log(data, error);
+
+  if(error || !data?.user) {
+    redirect('/auth');
+  }
+  
   return (
     <div className="min-h-screen bg-gray-50">
       <Nav />

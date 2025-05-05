@@ -1,11 +1,13 @@
 'use client';
 
 import { LogOut } from 'lucide-react';
+import { logout } from '@/app/auth/actions';
 
-export function Nav() {
+
+export async function Nav() {
+
   const handleLogout = async () => {
-    // Implementar a lógica de logout aqui
-    console.log('Logout clicked');
+    await logout();
   };
 
   return (

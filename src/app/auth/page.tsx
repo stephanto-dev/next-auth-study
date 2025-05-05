@@ -1,6 +1,8 @@
-'use client';
+'use client'
 
 import { useState } from 'react';
+import { login, signup } from './actions';
+
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -45,7 +47,7 @@ export default function AuthPage() {
 
           <div>
             <button
-              type="submit"
+              formAction={isLogin ? login : signup}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               {isLogin ? 'Entrar' : 'Cadastrar'}
